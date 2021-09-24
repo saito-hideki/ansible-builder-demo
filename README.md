@@ -47,7 +47,7 @@ $ docker push quay.io/<USERNAME>/custom_ee_ansible29:latest
 ```
 
 ## Appendix
-### How to use specific version Ansible Core
+### How to use specific version Ansible 2.9
 
 You can specify the specific version in `execution-environment.yml` like below:
 
@@ -56,6 +56,14 @@ You can specify the specific version in `execution-environment.yml` like below:
 additional_build_steps:
   prepend: |
     RUN pip install --upgrade pip
-    RUN pip install ansible==2.9.12      # HERE
+    RUN pip install ansible==2.9.12      # HERE (1)
+```
+
+If you want to use the latest Z release like 2.9.Z, you just remove (1) like below:
+
+```yaml
 ...snip...
+additional_build_steps:
+  prepend: |
+    RUN pip install --upgrade pip
 ```
